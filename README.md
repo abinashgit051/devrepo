@@ -1,3 +1,3 @@
 # devrepo
 
-push code 2
+trigger
