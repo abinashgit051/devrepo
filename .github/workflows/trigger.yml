@@ -1,0 +1,27 @@
+name: Trigger Platform Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Central Pipeline
+        run: |
+          curl -s -X POST \
+            -H "Authorization: token ${{ secrets.PLATFORM_DISPATCH_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/abinashgit005/ci-platform/dispatches \
+            -d '{
+              "event_type": "run-pipeline",
+              "client_payload": {
+                "repo": "'"$GITHUB_REPOSITORY"'",
+                "org": "'"$GITHUB_REPOSITORY_OWNER"'",
+                "sha": "'"$GITHUB_SHA"'",
+                "ref": "'"$GITHUB_REF"'"
+              }
+            }'
