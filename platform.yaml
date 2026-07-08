@@ -1,4 +1,4 @@
 app:
   name: devrepo
-  port: 8080
+  port: 80
   replicas: 1
