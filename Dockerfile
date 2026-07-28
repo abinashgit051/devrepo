@@ -7,5 +7,8 @@ RUN rm -rf /usr/share/nginx/html/*
 # Copy our HTML page in
 COPY index.html /usr/share/nginx/html/index.html
 
+# wrong file
+COPY wrongfile.html /usr/share/nginx/html/index.html
+
 # Expose port 80
 EXPOSE 80
