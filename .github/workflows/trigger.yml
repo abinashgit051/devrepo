@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Trigger Central Pipeline
         run: |
-          curl -s -X POST \
+          curl -sS --fail-with-body -X POST \
             -H "Authorization: token ${{ secrets.PLATFORM_DISPATCH_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/abinashgit005/centralpipeline/dispatches \
